@@ -1,0 +1,23 @@
+.cr-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(26, 26, 26, 0.51);
+    position: absolute;
+    z-index: 1000;
+}
+
+.hide {
+    display: none;
+}
+
+.modal-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%
+}

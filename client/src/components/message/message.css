@@ -1,0 +1,23 @@
+.message {
+    margin-bottom: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 50%;
+    padding: 0;
+}
+
+.message-content {
+    padding: 10px;
+    border-radius: 10px;
+    word-wrap: break-word; /* Перенос длинных слов */
+}
+
+.sender-message {
+    align-self: flex-end;
+    background-color: #535a4f; /* Цвет фона сообщения отправителя */
+}
+.receiver-message {
+    align-self: flex-start;
+    background-color: #313435; /* Цвет фона сообщения получателя */
+}
+
