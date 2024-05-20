@@ -2,6 +2,7 @@ package com.vlad.server.service.user;
 
 import com.vlad.server.dto.ChatDTO;
 import com.vlad.server.dto.UserDTO;
+import com.vlad.server.entity.Chat;
 import com.vlad.server.entity.User;
 import com.vlad.server.repo.user.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,13 +39,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<ChatDTO> getAllChats(Long userId) {
         User user = userRepository.findById(userId);
-        if (user != null) {
-            return user.getChats().isEmpty() ? null :
+        List<Chat> chats = user.getChats();
+
+        return chats.isEmpty() ? Collections.emptyList() :
                     user.getChats().stream()
                             .map(ChatDTO::new)
                             .collect(Collectors.toList());
-        }
-        else return Collections.emptyList();
     }
     @Override
     public List<UserDTO> getAllOnlineUsers() {

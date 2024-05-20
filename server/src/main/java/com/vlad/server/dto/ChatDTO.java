@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -17,28 +18,13 @@ public class ChatDTO {
     private List<UserDTO> users;
     private List<MessageDTO> messages;
 
-    public void addUsers(Chat chat) {
-        for(User user : chat.getUsers()) {
-            this.users.add(new UserDTO(user));
-        }
-    }
-
-    public void addMessages(Chat chat) {
-        for(Message message : chat.getMessages()) {
-            this.messages.add(new MessageDTO(message));
-        }
-    }
-
     public ChatDTO() {}
 
     public ChatDTO(Chat chat) {
         this.id = chat.getId();
         this.name = chat.getName();
         this.isGroup = chat.getIsGroup();
-
-        if (chat.getUsers() != null) {
-            this.addUsers(chat);
-            this.addMessages(chat);
-        }
+        this.users = chat.getUsers().stream().map(UserDTO::new).collect(Collectors.toList());
+        this.messages = chat.getMessages().stream().map(MessageDTO::new).collect(Collectors.toList());
     }
 }
