@@ -23,12 +23,12 @@ public class MyUserDetail implements UserDetails {
 
     @Override
     public String getPassword() {
-        return "";
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return "";
+        return user.getLogin();
     }
 
     public Long getId() {
@@ -37,21 +37,21 @@ public class MyUserDetail implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true; // Учетная запись никогда не истекает
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true; // Учетная запись никогда не блокируется
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true; // Пароль пользователя никогда не истекает
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true; // Учетная запись пользователя всегда активна
     }
 }

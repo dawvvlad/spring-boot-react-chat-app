@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
                             .map(ChatDTO::new)
                             .collect(Collectors.toList());
         }
-        return Collections.emptyList();
+        else return Collections.emptyList();
     }
     @Override
     public List<UserDTO> getAllOnlineUsers() {

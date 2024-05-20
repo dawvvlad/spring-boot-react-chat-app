@@ -49,6 +49,8 @@ public class ApiController {
             throw new NoSuchValueException("User not found");
         }
         List<ChatDTO> chats = userService.getAllChats(id);
+
+        System.out.println(chats);
         return ResponseEntity.status(HttpStatus.OK).body(chats);
     }
     @PostMapping("/createChat")

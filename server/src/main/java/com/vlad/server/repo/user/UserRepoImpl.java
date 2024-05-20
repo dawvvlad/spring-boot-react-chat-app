@@ -2,6 +2,7 @@ package com.vlad.server.repo.user;
 
 import com.vlad.server.entity.User;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
@@ -24,9 +25,10 @@ public class UserRepoImpl implements UserRepo {
     @Transactional
     @Override
     public List<User> getAllOnlineUsers() {
-        return entityManager.
+        List<User> users = entityManager.
                 createQuery("SELECT u FROM User u", User.class)
                 .getResultList();
+        return !users.isEmpty() ? users : null;
     }
 
     @Transactional
@@ -36,13 +38,17 @@ public class UserRepoImpl implements UserRepo {
         for (Long id : userIds) {
             users.add(entityManager.find(User.class, id));
         }
-        return users;
+        return !users.isEmpty() ? users : null;
     }
 
     @Transactional
     @Override
     public User findById(Long id) {
-        return entityManager.find(User.class, id);
+        try {
+            return entityManager.find(User.class, id);
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     @Transactional
@@ -54,6 +60,12 @@ public class UserRepoImpl implements UserRepo {
     @Transactional
     @Override
     public User findByUsername(String username) {
-        return entityManager.find(User.class, username);
+        try {
+            return entityManager.createQuery("SELECT u FROM User u WHERE u.login = :username", User.class)
+                    .setParameter("username", username)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null; // Если пользователь не найден, возвращаем null
+        }
     }
 }
