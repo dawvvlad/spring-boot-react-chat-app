@@ -1,7 +1,7 @@
 # Spring-boot and react chat app
 ## Многопользовательский чат с возможностью создания приватных и групповых чатов
 
-* > [Серверная часть](server/) реализована на Java [Spring](https://spring.io/projects/spring-framework/)
+* [Серверная часть](server/) реализована на Java [Spring](https://spring.io/projects/spring-framework/)
   - Взаимодействие с базой данных реализовано с помощью [Hibernate](https://hibernate.org/)
   - Реализована аутентификация и авторизация пользователей с помощью [Spring Security](https://docs.spring.io/spring-security/reference/index.html)
   - Отправка и получение сообщений релизовано с помощью [Spring WebSockets](https://docs.spring.io/spring-framework/reference/web/webflux-websocket.html)
