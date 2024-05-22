@@ -1,3 +1,3 @@
 # Spring-boot and react chat app
-## Многопользовательский чат, написанный на Spring + React
+## Многопользовательский чат на Spring + React
 
