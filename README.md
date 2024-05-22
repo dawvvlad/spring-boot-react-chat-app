@@ -7,3 +7,4 @@
   - Отправка и получение сообщений релизовано с помощью [Spring WebSockets](https://docs.spring.io/spring-framework/reference/web/webflux-websocket.html)
 * [Клиентская часть](client/) реализована с помощью [React JS](https://github.com/dawvvlad/spring-boot-react-chat-app/tree/master/client)
   - Подключение к WebSocket и подписка на STOMP реализована с помощью [StompJS](https://stomp-js.github.io/)
+
